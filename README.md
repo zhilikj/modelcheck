@@ -1,31 +1,36 @@
 # modelcheck
 
 [![tests](https://github.com/zhilikj/modelcheck/actions/workflows/test.yml/badge.svg)](https://github.com/zhilikj/modelcheck/actions/workflows/test.yml)
+[![PyPI](https://img.shields.io/pypi/v/llm-modelcheck.svg)](https://pypi.org/project/llm-modelcheck/)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://github.com/zhilikj/modelcheck)
 [![dependencies: none](https://img.shields.io/badge/dependencies-none-brightgreen.svg)](https://github.com/zhilikj/modelcheck)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/zhilikj/modelcheck/blob/main/LICENSE)
 
 检测一个大模型 API 端点有没有在**掺水**：换了模型、降级到便宜型号、或者把功能阉割掉。
 
-零依赖，Python 3.8+，下载单个文件就能跑。支持 OpenAI 兼容接口（覆盖绝大多数中转站、DeepSeek、Qwen、Kimi、GLM、Groq、OpenRouter），也支持 Anthropic 和 Gemini 的原生接口。
+零依赖，Python 3.8+。支持 OpenAI 兼容接口（覆盖绝大多数中转站、DeepSeek、Qwen、Kimi、GLM、Groq、OpenRouter），也支持 Anthropic 和 Gemini 的原生接口。
 
 **CI 在四个环境上跑过：Python 3.8 / 3.10 / 3.12 + Windows 3.12，39 个测试全绿。**
 
 ```bash
-# 不用装任何东西
-curl -O https://raw.githubusercontent.com/zhilikj/modelcheck/main/modelcheck.py
-python modelcheck.py self-test          # 先自检，确认工具本身没毛病
-python modelcheck.py run \
+pip install llm-modelcheck
+
+modelcheck self-test          # 先自检，确认工具本身没毛病（44 项，不联网）
+modelcheck run \
     --base-url https://api.example.com/v1 \
     --api-key sk-xxx \
     --model gpt-4o
 ```
 
-或者装成命令：
+> **包名是 `llm-modelcheck`，命令是 `modelcheck`。**
+> `modelcheck` 这个包名在 PyPI 上已被一个俄语的同类工具占用，所以加了 `llm-` 前缀区分。
+> 命令名保持短的，因为你要天天敲它。
+
+**不想装也可以**，直接下单个文件跑（零依赖，不需要 pip）：
 
 ```bash
-pip install git+https://github.com/zhilikj/modelcheck
-modelcheck run --base-url ... --api-key ... --model ...
+curl -O https://raw.githubusercontent.com/zhilikj/modelcheck/main/modelcheck.py
+python modelcheck.py run --base-url ... --api-key ... --model gpt-4o
 ```
 
 ---
