@@ -1,8 +1,15 @@
 # modelcheck
 
+[![tests](https://github.com/zhilikj/modelcheck/actions/workflows/test.yml/badge.svg)](https://github.com/zhilikj/modelcheck/actions/workflows/test.yml)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://github.com/zhilikj/modelcheck)
+[![dependencies: none](https://img.shields.io/badge/dependencies-none-brightgreen.svg)](https://github.com/zhilikj/modelcheck)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/zhilikj/modelcheck/blob/main/LICENSE)
+
 检测一个大模型 API 端点有没有在**掺水**：换了模型、降级到便宜型号、或者把功能阉割掉。
 
 零依赖，Python 3.8+，下载单个文件就能跑。支持 OpenAI 兼容接口（覆盖绝大多数中转站、DeepSeek、Qwen、Kimi、GLM、Groq、OpenRouter），也支持 Anthropic 和 Gemini 的原生接口。
+
+**CI 在四个环境上跑过：Python 3.8 / 3.10 / 3.12 + Windows 3.12，39 个测试全绿。**
 
 ```bash
 # 不用装任何东西
