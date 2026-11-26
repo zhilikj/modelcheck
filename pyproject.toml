@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "modelcheck"
+version = "0.4.0"
+description = "检测大模型 API 端点是否在掺水（换模型 / 降级 / 功能阉割）。零依赖，只做证伪不做证真。"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [{ name = "治历科技", email = "viveyan@126.com" }]
+keywords = ["llm", "openai", "api", "probe", "tokenizer", "tiktoken", "audit"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Testing",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/zhilikj/modelcheck"
+Source = "https://github.com/zhilikj/modelcheck"
+
+[project.scripts]
+modelcheck = "modelcheck:main"
+
+[tool.setuptools]
+py-modules = ["modelcheck"]
